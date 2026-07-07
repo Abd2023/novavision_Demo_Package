@@ -1,0 +1,47 @@
+{
+  "name": "SingleImageInfoExecutor",
+  "type": "Request",
+  "inputs": {
+    "InputImage": {
+      "name": "InputImage",
+      "value": {
+        "uID": "demo-image-001",
+        "mimeType": "image/png",
+        "base64": ""
+      },
+      "type": "Image",
+      "field": "img"
+    }
+  },
+  "configs": {
+    "Mode": {
+      "name": "SingleImageMode",
+      "value": {
+        "name": "BasicMode",
+        "value": 1,
+        "type": "object",
+        "field": "option",
+        "threshold": {
+          "name": "BasicThreshold",
+          "value": 0.5,
+          "type": "number",
+          "field": "textInput"
+        },
+        "method": {
+          "name": "BasicMethod",
+          "value": {
+            "name": "FastMethod",
+            "value": 1,
+            "type": "string",
+            "field": "option"
+          },
+          "type": "object",
+          "field": "dropdownlist"
+        }
+      },
+      "type": "object",
+      "field": "dependentDropdownlist"
+    }
+  }
+}
+

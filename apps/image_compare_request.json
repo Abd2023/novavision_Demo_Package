@@ -1,0 +1,59 @@
+{
+  "name": "ImageCompareExecutor",
+  "type": "Request",
+  "inputs": {
+    "FirstImage": {
+      "name": "FirstImage",
+      "value": {
+        "uID": "demo-image-001",
+        "mimeType": "image/png",
+        "base64": ""
+      },
+      "type": "Image",
+      "field": "img"
+    },
+    "SecondImage": {
+      "name": "SecondImage",
+      "value": {
+        "uID": "demo-image-002",
+        "mimeType": "image/png",
+        "base64": ""
+      },
+      "type": "Image",
+      "field": "img"
+    }
+  },
+  "configs": {
+    "Mode": {
+      "name": "ImageCompareMode",
+      "value": {
+        "name": "AdvancedMode",
+        "value": 2,
+        "type": "object",
+        "field": "option",
+        "features": {
+          "name": "AdvancedFeatures",
+          "value": [
+            {
+              "name": "BrightnessFeature",
+              "value": 1,
+              "type": "string",
+              "field": "option"
+            }
+          ],
+          "type": "list",
+          "field": "selectBox"
+        },
+        "label": {
+          "name": "AdvancedLabel",
+          "value": "compare-demo",
+          "type": "string",
+          "field": "textInput"
+        }
+      },
+      "type": "object",
+      "field": "dependentDropdownlist"
+    }
+  }
+}
+
