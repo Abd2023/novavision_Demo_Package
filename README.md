@@ -16,12 +16,6 @@ Iki executor da konfigurasyon tarafinda `dependentDropdownlist` kullanir. Bu dro
 - `BasicMode`: `textInput` ve `dropdownlist` alanlarini acar.
 - `AdvancedMode`: `selectBox` ve `textInput` alanlarini acar.
 
-## Trello Cevaplari
-
-`Package Github Repo's = https://github.com/Abd2023/novavision_Demo_Package.git`
-
-`What does your package do = Bu demo paket, iki adet gorsel isleme executor'u icerir. Ilk executor tek bir gorsel inputunu ozetler. Ikinci executor iki gorsel inputunu karsilastirir. Ayrica iki executor da dependent dropdown konfigurasyonunu gostermek icin hazirlanmistir.`
-
 ## Kontrol Listesi Karsiligi
 
 - First executor: 1 input, 1 output.
