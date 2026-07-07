@@ -36,6 +36,8 @@ tests/                Trello kontrol listesini dogrulayan pytest testleri
 service.py            Basit executor lookup ve bootstrap kontrol dosyasi
 ```
 
+Not: NovaVision Suite import islemi `src.models.PackageModel` modulunu bekledigi icin `src/models/PackageModel.py` dosyasi uyumluluk dosyasi olarak eklenmistir.
+
 ## Dogrulama
 
 Asagidaki komutlar ile paketin temel yapisi dogrulanabilir:
@@ -50,4 +52,3 @@ Beklenen sonuc:
 
 - `python -m pytest`: tum testler basarili olur.
 - `python service.py`: iki executor da `ready` olarak gorunur.
-
