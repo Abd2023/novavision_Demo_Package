@@ -2,13 +2,16 @@ from __future__ import annotations
 
 from typing import List, Literal, Union
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, Field
 
 
 class NovaVisionModel(BaseModel):
     """Small base model compatible with the current Pydantic test runtime."""
 
-    model_config = ConfigDict(extra="forbid", populate_by_name=True)
+    class Config:
+        extra = "forbid"
+        allow_population_by_field_name = True
+        populate_by_name = True
 
 
 class ImageValue(NovaVisionModel):
@@ -23,7 +26,8 @@ class InputImage(NovaVisionModel):
     type: Literal["Image"] = "Image"
     field: Literal["img"] = "img"
 
-    model_config = ConfigDict(title="Input Image")
+    class Config:
+        title = "Input Image"
 
 
 class FirstImage(NovaVisionModel):
@@ -32,7 +36,8 @@ class FirstImage(NovaVisionModel):
     type: Literal["Image"] = "Image"
     field: Literal["img"] = "img"
 
-    model_config = ConfigDict(title="First Image")
+    class Config:
+        title = "First Image"
 
 
 class SecondImage(NovaVisionModel):
@@ -41,7 +46,8 @@ class SecondImage(NovaVisionModel):
     type: Literal["Image"] = "Image"
     field: Literal["img"] = "img"
 
-    model_config = ConfigDict(title="Second Image")
+    class Config:
+        title = "Second Image"
 
 
 class ImageSummary(NovaVisionModel):
@@ -50,7 +56,8 @@ class ImageSummary(NovaVisionModel):
     type: Literal["string"] = "string"
     field: Literal["textInput"] = "textInput"
 
-    model_config = ConfigDict(title="Image Summary")
+    class Config:
+        title = "Image Summary"
 
 
 class ComparisonSummary(NovaVisionModel):
@@ -59,7 +66,8 @@ class ComparisonSummary(NovaVisionModel):
     type: Literal["string"] = "string"
     field: Literal["textInput"] = "textInput"
 
-    model_config = ConfigDict(title="Comparison Summary")
+    class Config:
+        title = "Comparison Summary"
 
 
 class MatchScore(NovaVisionModel):
@@ -68,7 +76,8 @@ class MatchScore(NovaVisionModel):
     type: Literal["number"] = "number"
     field: Literal["textInput"] = "textInput"
 
-    model_config = ConfigDict(title="Match Score")
+    class Config:
+        title = "Match Score"
 
 
 class FastMethodOption(NovaVisionModel):
@@ -77,7 +86,8 @@ class FastMethodOption(NovaVisionModel):
     type: Literal["string"] = "string"
     field: Literal["option"] = "option"
 
-    model_config = ConfigDict(title="Fast Method")
+    class Config:
+        title = "Fast Method"
 
 
 class DetailedMethodOption(NovaVisionModel):
@@ -86,7 +96,8 @@ class DetailedMethodOption(NovaVisionModel):
     type: Literal["string"] = "string"
     field: Literal["option"] = "option"
 
-    model_config = ConfigDict(title="Detailed Method")
+    class Config:
+        title = "Detailed Method"
 
 
 class BrightnessFeatureOption(NovaVisionModel):
@@ -95,7 +106,8 @@ class BrightnessFeatureOption(NovaVisionModel):
     type: Literal["string"] = "string"
     field: Literal["option"] = "option"
 
-    model_config = ConfigDict(title="Brightness Feature")
+    class Config:
+        title = "Brightness Feature"
 
 
 class ContrastFeatureOption(NovaVisionModel):
@@ -104,7 +116,8 @@ class ContrastFeatureOption(NovaVisionModel):
     type: Literal["string"] = "string"
     field: Literal["option"] = "option"
 
-    model_config = ConfigDict(title="Contrast Feature")
+    class Config:
+        title = "Contrast Feature"
 
 
 class BasicThreshold(NovaVisionModel):
@@ -113,7 +126,8 @@ class BasicThreshold(NovaVisionModel):
     type: Literal["number"] = "number"
     field: Literal["textInput"] = "textInput"
 
-    model_config = ConfigDict(title="Basic Threshold")
+    class Config:
+        title = "Basic Threshold"
 
 
 class BasicMethod(NovaVisionModel):
@@ -122,7 +136,8 @@ class BasicMethod(NovaVisionModel):
     type: Literal["object"] = "object"
     field: Literal["dropdownlist"] = "dropdownlist"
 
-    model_config = ConfigDict(title="Basic Method")
+    class Config:
+        title = "Basic Method"
 
 
 class AdvancedFeatures(NovaVisionModel):
@@ -133,7 +148,8 @@ class AdvancedFeatures(NovaVisionModel):
     type: Literal["list"] = "list"
     field: Literal["selectBox"] = "selectBox"
 
-    model_config = ConfigDict(title="Advanced Features")
+    class Config:
+        title = "Advanced Features"
 
 
 class AdvancedLabel(NovaVisionModel):
@@ -142,7 +158,8 @@ class AdvancedLabel(NovaVisionModel):
     type: Literal["string"] = "string"
     field: Literal["textInput"] = "textInput"
 
-    model_config = ConfigDict(title="Advanced Label")
+    class Config:
+        title = "Advanced Label"
 
 
 class BasicMode(NovaVisionModel):
@@ -153,7 +170,8 @@ class BasicMode(NovaVisionModel):
     threshold: BasicThreshold = Field(default_factory=BasicThreshold)
     method: BasicMethod = Field(default_factory=BasicMethod)
 
-    model_config = ConfigDict(title="Basic Mode")
+    class Config:
+        title = "Basic Mode"
 
 
 class AdvancedMode(NovaVisionModel):
@@ -164,7 +182,8 @@ class AdvancedMode(NovaVisionModel):
     features: AdvancedFeatures = Field(default_factory=AdvancedFeatures)
     label: AdvancedLabel = Field(default_factory=AdvancedLabel)
 
-    model_config = ConfigDict(title="Advanced Mode")
+    class Config:
+        title = "Advanced Mode"
 
 
 class SingleImageModeConfig(NovaVisionModel):
@@ -173,7 +192,8 @@ class SingleImageModeConfig(NovaVisionModel):
     type: Literal["object"] = "object"
     field: Literal["dependentDropdownlist"] = "dependentDropdownlist"
 
-    model_config = ConfigDict(title="Single Image Mode")
+    class Config:
+        title = "Single Image Mode"
 
 
 class ImageCompareModeConfig(NovaVisionModel):
@@ -182,7 +202,8 @@ class ImageCompareModeConfig(NovaVisionModel):
     type: Literal["object"] = "object"
     field: Literal["dependentDropdownlist"] = "dependentDropdownlist"
 
-    model_config = ConfigDict(title="Image Compare Mode")
+    class Config:
+        title = "Image Compare Mode"
 
 
 class SingleImageInfoInputs(NovaVisionModel):
@@ -219,10 +240,10 @@ class SingleImageInfoRequest(NovaVisionModel):
     inputs: SingleImageInfoInputs = Field(default_factory=SingleImageInfoInputs)
     configs: SingleImageInfoConfigs = Field(default_factory=SingleImageInfoConfigs)
 
-    model_config = ConfigDict(
-        title="Single Image Info Request",
-        json_schema_extra={"target": "configs"},
-    )
+    class Config:
+        title = "Single Image Info Request"
+        schema_extra = {"target": "configs"}
+        json_schema_extra = {"target": "configs"}
 
 
 class SingleImageInfoResponse(NovaVisionModel):
@@ -230,7 +251,8 @@ class SingleImageInfoResponse(NovaVisionModel):
     type: Literal["Response"] = "Response"
     outputs: SingleImageInfoOutputs = Field(default_factory=SingleImageInfoOutputs)
 
-    model_config = ConfigDict(title="Single Image Info Response")
+    class Config:
+        title = "Single Image Info Response"
 
 
 class ImageCompareRequest(NovaVisionModel):
@@ -239,10 +261,10 @@ class ImageCompareRequest(NovaVisionModel):
     inputs: ImageCompareInputs = Field(default_factory=ImageCompareInputs)
     configs: ImageCompareConfigs = Field(default_factory=ImageCompareConfigs)
 
-    model_config = ConfigDict(
-        title="Image Compare Request",
-        json_schema_extra={"target": "configs"},
-    )
+    class Config:
+        title = "Image Compare Request"
+        schema_extra = {"target": "configs"}
+        json_schema_extra = {"target": "configs"}
 
 
 class ImageCompareResponse(NovaVisionModel):
@@ -250,7 +272,8 @@ class ImageCompareResponse(NovaVisionModel):
     type: Literal["Response"] = "Response"
     outputs: ImageCompareOutputs = Field(default_factory=ImageCompareOutputs)
 
-    model_config = ConfigDict(title="Image Compare Response")
+    class Config:
+        title = "Image Compare Response"
 
 
 class SingleImageInfoExecutorOption(NovaVisionModel):
@@ -261,10 +284,10 @@ class SingleImageInfoExecutorOption(NovaVisionModel):
     type: Literal["Executor"] = "Executor"
     field: Literal["option"] = "option"
 
-    model_config = ConfigDict(
-        title="Single Image Info Executor",
-        json_schema_extra={"target": {"value": 0}},
-    )
+    class Config:
+        title = "Single Image Info Executor"
+        schema_extra = {"target": {"value": 0}}
+        json_schema_extra = {"target": {"value": 0}}
 
 
 class ImageCompareExecutorOption(NovaVisionModel):
@@ -273,10 +296,10 @@ class ImageCompareExecutorOption(NovaVisionModel):
     type: Literal["Executor"] = "Executor"
     field: Literal["option"] = "option"
 
-    model_config = ConfigDict(
-        title="Image Compare Executor",
-        json_schema_extra={"target": {"value": 0}},
-    )
+    class Config:
+        title = "Image Compare Executor"
+        schema_extra = {"target": {"value": 0}}
+        json_schema_extra = {"target": {"value": 0}}
 
 
 class ConfigExecutor(NovaVisionModel):
@@ -287,7 +310,8 @@ class ConfigExecutor(NovaVisionModel):
     type: Literal["Executor"] = "Executor"
     field: Literal["dropdownlist"] = "dropdownlist"
 
-    model_config = ConfigDict(title="Executor")
+    class Config:
+        title = "Executor"
 
 
 class PackageConfigs(NovaVisionModel):
@@ -299,4 +323,5 @@ class PackageModel(NovaVisionModel):
     type: Literal["capsule"] = "capsule"
     configs: PackageConfigs = Field(default_factory=PackageConfigs)
 
-    model_config = ConfigDict(title="NovaVision Demo Package")
+    class Config:
+        title = "NovaVision Demo Package"
