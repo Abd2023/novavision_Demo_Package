@@ -1,49 +1,59 @@
 # NovaVision Demo Package
 
-This repository contains a lightweight NovaVision-style demo package for the `GNL - 03 Demo Package` task.
+Bu repo, `GNL - 03 Demo Package` Trello gorevi icin hazirlanmis basit bir NovaVision demo paketidir.
 
-## What The Package Does
+Paketin amaci gercek bir yapay zeka modeli calistirmak degil; NovaVision paket yapisini, executor mantigini, input/output tanimlarini ve `dependentDropdownlist` konfigurasyonunu gostermektir.
 
-This demo package provides two image utility executors:
+## Paket Ne Yapar?
 
-- `SingleImageInfoExecutor` receives one image-like input and returns one image summary output.
-- `ImageCompareExecutor` receives two image-like inputs and returns two outputs: a comparison summary and a match score.
+Bu demo paketinde iki executor vardir:
 
-Both executors include a `dependentDropdownlist` configuration. The dropdown has two options:
+- `SingleImageInfoExecutor`: 1 adet gorsel benzeri input alir ve 1 adet ozet output uretir.
+- `ImageCompareExecutor`: 2 adet gorsel benzeri input alir ve 2 adet output uretir: karsilastirma ozeti ve benzerlik skoru.
 
-- `BasicMode`, which exposes `textInput` and `dropdownlist` fields.
-- `AdvancedMode`, which exposes `selectBox` and `textInput` fields.
+Iki executor da konfigurasyon tarafinda `dependentDropdownlist` kullanir. Bu dropdown icinde iki secenek vardir:
 
-## Trello Answers
+- `BasicMode`: `textInput` ve `dropdownlist` alanlarini acar.
+- `AdvancedMode`: `selectBox` ve `textInput` alanlarini acar.
+
+## Trello Cevaplari
 
 `Package Github Repo's = https://github.com/Abd2023/novavision_Demo_Package.git`
 
-`What does your package do = This demo package provides two image utility executors: one summarizes a single image input, and one compares two image inputs while demonstrating dynamic dependent dropdown configuration.`
+`What does your package do = Bu demo paket, iki adet gorsel isleme executor'u icerir. Ilk executor tek bir gorsel inputunu ozetler. Ikinci executor iki gorsel inputunu karsilastirir. Ayrica iki executor da dependent dropdown konfigurasyonunu gostermek icin hazirlanmistir.`
 
-## Checklist Coverage
+## Kontrol Listesi Karsiligi
 
 - First executor: 1 input, 1 output.
-- Second executor: 2 inputs, 2 outputs.
-- Common feature: both executors have a `dependentDropdownlist`.
-- First option: exposes 2 different field types, `textInput` and `dropdownlist`.
-- Second option: exposes 2 different field types, `selectBox` and `textInput`.
+- Second executor: 2 input, 2 output.
+- Common feature: iki executor da `dependentDropdownlist` icerir.
+- First option: 2 farkli field tipi acar: `textInput` ve `dropdownlist`.
+- Second option: 2 farkli field tipi acar: `selectBox` ve `textInput`.
 
-## Project Structure
+## Proje Yapisi
 
 ```text
-apps/                 Example request payloads
-notebooks/            Reserved for notebooks
-resources/            Reserved for sample resources
-src/executors/        Executor runtime classes
-src/models/           Pydantic PackageModel and request/response models
-tests/                Pytest validation for the Trello checklist
-service.py            Lightweight executor lookup entrypoint
+apps/                 Ornek request payload dosyalari
+notebooks/            Notebook dosyalari icin ayrilmis klasor
+resources/            Ornek kaynak dosyalar icin ayrilmis klasor
+src/executors/        Executor siniflari
+src/models/           Pydantic PackageModel ve request/response modelleri
+tests/                Trello kontrol listesini dogrulayan pytest testleri
+service.py            Basit executor lookup ve bootstrap kontrol dosyasi
 ```
 
-## Validate
+## Dogrulama
+
+Asagidaki komutlar ile paketin temel yapisi dogrulanabilir:
 
 ```powershell
 python -m pip install -r requirements.dev.txt
 python -m pytest
+python service.py
 ```
+
+Beklenen sonuc:
+
+- `python -m pytest`: tum testler basarili olur.
+- `python service.py`: iki executor da `ready` olarak gorunur.
 
